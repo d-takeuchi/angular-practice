@@ -1,8 +1,7 @@
-const Product = require("./model/product")
+const Product = require('./model/product')
 
-class SampleDb{
-
-  constructor(){
+class SampleDb {
+  constructor() {
     this.products = [
       {
         coverImage: './assets/img/phone-cover.jpg',
@@ -52,24 +51,26 @@ class SampleDb{
         headingtext2: 'テキスト文章　テキスト文章　テキスト文章　テキスト文章　テキスト文章　テキスト文章　テキスト文章　テキスト文章　テキスト文章　テキスト文章　テキスト文章　テキスト文章　テキスト文章　テキスト文章　テキスト文章　テキスト文章　テキスト文章　テキスト文章',
         headingtext3: 'Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.'
       }
-    ];
+    ]
   }
 
-  async initDb(){
-    await this.cleanDb();
-    this.pushProductsToDb();
+  async initDb() {
+    await this.cleanDb()
+    this.pushProductsToDb()
   }
 
-  async cleanDb(){
-    await Product.deleteMany({});
+  async cleanDb() {
+    await Product.deleteMany({})
   }
 
-  pushProductsToDb(){
-    this.products.forEach((product)=>{
-      const newProduct = new Product(product);
-      newProduct.save();
-    })
+  pushProductsToDb() {
+    this.products.forEach(
+      (product) => {
+        const newProduct = new Product(product)
+        newProduct.save()
+      }
+    )
   }
 }
 
-module.exports = SampleDb;
+module.exports = SampleDb
